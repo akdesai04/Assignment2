@@ -22,7 +22,7 @@ var scenes;
         // public methods
         End.prototype.Start = function () {
             this._road = new objects.Road();
-            this._gameOverLabel = new objects.Label("Game Over!", "80px", "Dock51", "#FFFF00", config.Screen.HALF_WIDTH, 160, true);
+            this._gameOverLabel = new objects.Label("Game Over!", "80px", "Permanent Marker", "#ce2727", config.Screen.HALF_WIDTH - 10, 120, true);
             this._restartButton = new objects.Button("RestartButton", config.Screen.HALF_WIDTH, 360, true);
             this.Main();
         };

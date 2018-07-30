@@ -22,7 +22,7 @@ var scenes;
         // public methods
         Instruction.prototype.Start = function () {
             this._welcomeLabel = new objects.Label("Instructions", "80px", "Consolas", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
-            this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
+            this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH + 250, 420, true);
             // this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult(" "));
             this.Main();
         };
