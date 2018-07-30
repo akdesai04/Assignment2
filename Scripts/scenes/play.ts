@@ -3,9 +3,9 @@ module scenes {
         // member variables
         private _car:objects.Car;
         private _road:objects.Road;
-        private _island:objects.Island;
+        private _station:objects.Station;
         private _enemies:objects.Enemy[];
-        private _cloudNum:number;
+        private _enemyNum:number;
         private _enemyTypes = ["redcar","truck","enemycar"];
         
         public engineSound:createjs.AbstractSoundInstance;
@@ -19,7 +19,7 @@ module scenes {
 
         // private methods
         private _buildClouds():void {
-            for (let count = 0; count < this._cloudNum; count++) {
+            for (let count = 0; count < this._enemyNum; count++) {
                 this._enemies.push(new objects.Enemy(this._enemyTypes[count]));
                 //this._clouds[count] = new objects.Cloud();
             }
@@ -34,11 +34,11 @@ module scenes {
 
             this._car = new objects.Car();
             this._road = new objects.Road();
-            this._island = new objects.Island();
+            this._station = new objects.Station();
 
             // creates an empty array of type Cloud
             this._enemies = new Array<objects.Enemy>();
-            this._cloudNum = 3;
+            this._enemyNum = 3;
 
             this._buildClouds();
            
@@ -48,9 +48,9 @@ module scenes {
         public Update():void {
             this._car.Update();
             this._road.Update();
-            this._island.Update();
+            this._station.Update();
 
-            managers.Collision.check(this._car, this._island);
+            managers.Collision.check(this._car, this._station);
 
             this._enemies.forEach(enemy => {
                 enemy.Update();
@@ -75,7 +75,7 @@ module scenes {
             this.addChild(this._road);
 
             // adding the island to the scene
-            this.addChild(this._island);
+            this.addChild(this._station);
 
             // adding the plane to the scene
             this.addChild(this._car);

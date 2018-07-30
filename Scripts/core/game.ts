@@ -13,14 +13,14 @@
     let Manifest = [
         {id: "car", src:"/Assets/images/car.png"},
         {id: "road", src:"/Assets/images/road.png"},
-        {id: "yay", src:"/Assets/audio/yay.ogg"},
-        {id: "thunder", src:"/Assets/audio/pump.mp3"},
+        {id: "yay", src:"/Assets/audio/pump.mp3"},
+        {id: "thunder", src:"/Assets/audio/smash.mp3"},
         {id: "engine", src:"/Assets/audio/cengine.mp3"},
         {id: "StartButton", src:"/Assets/images/StartButton.png"},
         {id: "redcar", src:"/Assets/images/redcar.png"},
         {id: "truck", src:"/Assets/images/truck.png"},
         {id: "enemycar", src:"/Assets/images/enemycar.png"},
-        {id: "island", src:"/Assets/images/gastation.png"},
+        {id: "station", src:"/Assets/images/gastation.png"},
         {id: "RestartButton", src:"/Assets/images/RestartButton.png"},
         {id: "background", src:"/Assets/images/background.jpg"}
     ]

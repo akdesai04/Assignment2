@@ -21,7 +21,7 @@ var scenes;
         }
         // private methods
         Play.prototype._buildClouds = function () {
-            for (var count = 0; count < this._cloudNum; count++) {
+            for (var count = 0; count < this._enemyNum; count++) {
                 this._enemies.push(new objects.Enemy(this._enemyTypes[count]));
                 //this._clouds[count] = new objects.Cloud();
             }
@@ -33,10 +33,10 @@ var scenes;
             this.engineSound.volume = 0.1;
             this._car = new objects.Car();
             this._road = new objects.Road();
-            this._island = new objects.Island();
+            this._station = new objects.Station();
             // creates an empty array of type Cloud
             this._enemies = new Array();
-            this._cloudNum = 3;
+            this._enemyNum = 3;
             this._buildClouds();
             this.Main();
         };
@@ -44,8 +44,8 @@ var scenes;
             var _this = this;
             this._car.Update();
             this._road.Update();
-            this._island.Update();
-            managers.Collision.check(this._car, this._island);
+            this._station.Update();
+            managers.Collision.check(this._car, this._station);
             this._enemies.forEach(function (enemy) {
                 enemy.Update();
                 managers.Collision.check(_this._car, enemy);
@@ -62,7 +62,7 @@ var scenes;
             // adding the ocean to the scene
             this.addChild(this._road);
             // adding the island to the scene
-            this.addChild(this._island);
+            this.addChild(this._station);
             // adding the plane to the scene
             this.addChild(this._car);
             // adding the cloud to the scene

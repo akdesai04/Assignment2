@@ -10,41 +10,41 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Island = /** @class */ (function (_super) {
-        __extends(Island, _super);
+    var Station = /** @class */ (function (_super) {
+        __extends(Station, _super);
         /**
          * Creates an instance of Plane.
-         * @memberof Plane
+         * @memberof Car
          */
-        function Island() {
-            var _this = _super.call(this, "island") || this;
+        function Station() {
+            var _this = _super.call(this, "station") || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Island.prototype._checkBounds = function () {
+        Station.prototype._checkBounds = function () {
             // check bottom boundary
             if (this.y > config.Screen.HEIGHT + this.halfHeight) {
                 this.Reset();
             }
         };
         // public methods
-        Island.prototype.Start = function () {
+        Station.prototype.Start = function () {
             this.regX = this.halfWidth;
             this.regY = this.halfHeight;
             this._verticalSpeed = 5;
             this.Reset();
         };
-        Island.prototype.Update = function () {
+        Station.prototype.Update = function () {
             this.y += this._verticalSpeed;
             this._checkBounds();
         };
-        Island.prototype.Reset = function () {
+        Station.prototype.Reset = function () {
             this.y = -this.height;
             this.x = Math.floor((Math.random() * (config.Screen.WIDTH - this.width)) + this.halfWidth);
         };
-        return Island;
+        return Station;
     }(objects.GameObject));
-    objects.Island = Island;
+    objects.Station = Station;
 })(objects || (objects = {}));
-//# sourceMappingURL=island.js.map
+//# sourceMappingURL=station.js.map

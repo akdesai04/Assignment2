@@ -1,14 +1,14 @@
 namespace objects {
-  export class Island extends objects.GameObject {
+  export class Station extends objects.GameObject {
     // member variables
     private _verticalSpeed: number;
 
     /**
      * Creates an instance of Plane.
-     * @memberof Plane
+     * @memberof Car
      */
     constructor() {
-      super("island");
+      super("station");
 
       this.Start();
     }

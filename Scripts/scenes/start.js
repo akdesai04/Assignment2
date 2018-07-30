@@ -21,7 +21,8 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("Car Crash", "80px", "Fugaz One", "#8B0000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("Car Crash", "80px", "Permanent Marker", "#ffb847", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT - 80, true);
+            this._welcomeLabel.alpha = 0.9;
             this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
             this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("background"));
             this.Main();
@@ -35,6 +36,7 @@ var scenes;
         };
         Start.prototype.Main = function () {
             console.log("Starting - START SCENE");
+            this.addChild(this._background);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {

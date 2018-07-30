@@ -7,11 +7,11 @@ namespace managers {
       let P1 = new math.Vec2(object1.x, object1.y);
       let P2 = new math.Vec2(object2.x, object2.y);
 
-      if (math.Vec2.Distance(P1, P2) < object1.halfHeight + object2.halfHeight) {
+      if (math.Vec2.Distance(P1, P2) < object1.halfHeight) {
         if (!object2.isColliding) {
           object2.isColliding = true;
             switch(object2.name) {
-                case "island":
+                case "station":
                 let yaySound = createjs.Sound.play("yay");
                 yaySound.volume = 0.1;
                 managers.Game.ScoreBoardManager.Score += 100;
@@ -20,7 +20,9 @@ namespace managers {
                 }
                 break;
 
-                case "cloud":
+                case "redcar":
+                case "truck":
+                case "enemycar":
                 let thunderSound = createjs.Sound.play("thunder");
                 thunderSound.volume = 0.1;
                 managers.Game.ScoreBoardManager.Lives -= 1;
