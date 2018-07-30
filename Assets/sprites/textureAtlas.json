@@ -18,12 +18,9 @@
 "animations": {
     "cloud": { "frames": [0] },
     "island": { "frames": [1] },
-    "plane": { 
-        "frames": [2, 3, 4],
-        "speed": 0.2
-    },
-    "RestartButton": { "frames": [5] },
-    "StartButton": { "frames": [6] }
+    "car": { "frames": [2] },
+    "RestartButton": { "frames": [3] },
+    "StartButton": { "frames": [4] }
 }
 
 }

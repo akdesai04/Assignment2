@@ -21,13 +21,12 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._ocean = new objects.Ocean();
-            this._welcomeLabel = new objects.Label("Mail Pilot", "80px", "Dock51", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("Car Crash", "80px", "Fugaz One", "#8B0000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
             this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("background"));
             this.Main();
         };
         Start.prototype.Update = function () {
-            this._ocean.Update();
         };
         Start.prototype.Reset = function () {
         };
@@ -36,11 +35,10 @@ var scenes;
         };
         Start.prototype.Main = function () {
             console.log("Starting - START SCENE");
-            this.addChild(this._ocean);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {
-                managers.Game.CurrentState = config.Scene.PLAY;
+                managers.Game.CurrentState = config.Scene.INSTRUCTION;
             }, this);
         };
         return Start;

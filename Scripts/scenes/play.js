@@ -15,13 +15,14 @@ var scenes;
         // constructors
         function Play() {
             var _this = _super.call(this) || this;
+            _this._enemyTypes = ["redcar", "truck", "enemycar"];
             _this.Start();
             return _this;
         }
         // private methods
         Play.prototype._buildClouds = function () {
             for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.Cloud());
+                this._enemies.push(new objects.Enemy(this._enemyTypes[count]));
                 //this._clouds[count] = new objects.Cloud();
             }
         };
@@ -30,24 +31,24 @@ var scenes;
             this.engineSound = createjs.Sound.play("engine");
             this.engineSound.loop = -1;
             this.engineSound.volume = 0.1;
-            this._plane = new objects.Plane();
-            this._ocean = new objects.Ocean();
+            this._car = new objects.Car();
+            this._road = new objects.Road();
             this._island = new objects.Island();
             // creates an empty array of type Cloud
-            this._clouds = new Array();
+            this._enemies = new Array();
             this._cloudNum = 3;
             this._buildClouds();
             this.Main();
         };
         Play.prototype.Update = function () {
             var _this = this;
-            this._plane.Update();
-            this._ocean.Update();
+            this._car.Update();
+            this._road.Update();
             this._island.Update();
-            managers.Collision.check(this._plane, this._island);
-            this._clouds.forEach(function (cloud) {
-                cloud.Update();
-                managers.Collision.check(_this._plane, cloud);
+            managers.Collision.check(this._car, this._island);
+            this._enemies.forEach(function (enemy) {
+                enemy.Update();
+                managers.Collision.check(_this._car, enemy);
             });
         };
         Play.prototype.Reset = function () {
@@ -59,15 +60,15 @@ var scenes;
         Play.prototype.Main = function () {
             console.log("Starting - PLAY SCENE");
             // adding the ocean to the scene
-            this.addChild(this._ocean);
+            this.addChild(this._road);
             // adding the island to the scene
             this.addChild(this._island);
             // adding the plane to the scene
-            this.addChild(this._plane);
+            this.addChild(this._car);
             // adding the cloud to the scene
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
-                var cloud = _a[_i];
-                this.addChild(cloud);
+            for (var _i = 0, _a = this._enemies; _i < _a.length; _i++) {
+                var enemy = _a[_i];
+                this.addChild(enemy);
             }
             this.addChild(managers.Game.ScoreBoardManager.LivesLabel);
             this.addChild(managers.Game.ScoreBoardManager.ScoreLabel);

@@ -12,7 +12,8 @@
     "easeljs": "^1.0.2",
     "preloadjs": "^1.0.1",
     "soundjs": "^1.0.1",
-    "tweenjs": "^1.0.2"
+    "tweenjs": "^1.0.2",
+    "typescript": "^2.9.2"
   },
   "devDependencies": {
     "@types/easeljs": "^1.0.0",

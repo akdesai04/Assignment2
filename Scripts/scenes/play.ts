@@ -1,11 +1,12 @@
 module scenes {
     export class Play extends objects.Scene {
         // member variables
-        private _plane:objects.Plane;
-        private _ocean:objects.Ocean;
+        private _car:objects.Car;
+        private _road:objects.Road;
         private _island:objects.Island;
-        private _clouds:objects.Cloud[];
+        private _enemies:objects.Enemy[];
         private _cloudNum:number;
+        private _enemyTypes = ["redcar","truck","enemycar"];
         
         public engineSound:createjs.AbstractSoundInstance;
 
@@ -19,7 +20,7 @@ module scenes {
         // private methods
         private _buildClouds():void {
             for (let count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.Cloud());
+                this._enemies.push(new objects.Enemy(this._enemyTypes[count]));
                 //this._clouds[count] = new objects.Cloud();
             }
         }
@@ -31,12 +32,12 @@ module scenes {
             this.engineSound.volume = 0.1;
 
 
-            this._plane = new objects.Plane();
-            this._ocean = new objects.Ocean();
+            this._car = new objects.Car();
+            this._road = new objects.Road();
             this._island = new objects.Island();
 
             // creates an empty array of type Cloud
-            this._clouds = new Array<objects.Cloud>();
+            this._enemies = new Array<objects.Enemy>();
             this._cloudNum = 3;
 
             this._buildClouds();
@@ -45,15 +46,15 @@ module scenes {
         }
 
         public Update():void {
-            this._plane.Update();
-            this._ocean.Update();
+            this._car.Update();
+            this._road.Update();
             this._island.Update();
 
-            managers.Collision.check(this._plane, this._island);
+            managers.Collision.check(this._car, this._island);
 
-            this._clouds.forEach(cloud => {
-                cloud.Update();
-                managers.Collision.check(this._plane, cloud);
+            this._enemies.forEach(enemy => {
+                enemy.Update();
+                managers.Collision.check(this._car, enemy);
             });
             
         }
@@ -71,17 +72,17 @@ module scenes {
             console.log(`Starting - PLAY SCENE`);
 
             // adding the ocean to the scene
-            this.addChild(this._ocean);
+            this.addChild(this._road);
 
             // adding the island to the scene
             this.addChild(this._island);
 
             // adding the plane to the scene
-            this.addChild(this._plane);
+            this.addChild(this._car);
 
             // adding the cloud to the scene
-            for (const cloud of this._clouds) {
-                this.addChild(cloud);
+            for (const enemy of this._enemies) {
+                this.addChild(enemy);
             }
 
             this.addChild(managers.Game.ScoreBoardManager.LivesLabel);

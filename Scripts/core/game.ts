@@ -10,44 +10,20 @@
     let ScoreBoardManager: managers.ScoreBoard;
     let TextureAtlas:createjs.SpriteSheet;
 
-    let textureData = {
-
-        "images": [
-        ],
-        
-        "framerate": 60,
-        "frames": [
-            [1, 1, 226, 178, 0, 0, 0],
-            [1, 181, 62, 63, 0, 0, 0],
-            [65, 181, 65, 65, 0, 0, 0],
-            [132, 181, 65, 65, 0, 0, 0],
-            [1, 248, 65, 65, 0, 0, 0],
-            [68, 248, 150, 50, 0, 0, 0],
-            [1, 315, 150, 50, 0, 0, 0]
-        ],
-        
-        "animations": {
-            "cloud": { "frames": [0] },
-            "island": { "frames": [1] },
-            "plane": { 
-                "frames": [2, 3, 4],
-                "speed": 0.2
-            },
-            "RestartButton": { "frames": [5] },
-            "StartButton": { "frames": [6] }
-        }
-        
-        };
-        
-
     let Manifest = [
-        {id: "textureAtlas", src:"/Assets/sprites/textureAtlas.png"},
-        {id: "ocean", src:"/Assets/images/space.jpg"},
+        {id: "car", src:"/Assets/images/car.png"},
+        {id: "road", src:"/Assets/images/road.png"},
         {id: "yay", src:"/Assets/audio/yay.ogg"},
-        {id: "thunder", src:"/Assets/audio/thunder.ogg"},
-        {id: "engine", src:"/Assets/audio/engine.ogg"}
+        {id: "thunder", src:"/Assets/audio/pump.mp3"},
+        {id: "engine", src:"/Assets/audio/cengine.mp3"},
+        {id: "StartButton", src:"/Assets/images/StartButton.png"},
+        {id: "redcar", src:"/Assets/images/redcar.png"},
+        {id: "truck", src:"/Assets/images/truck.png"},
+        {id: "enemycar", src:"/Assets/images/enemycar.png"},
+        {id: "island", src:"/Assets/images/gastation.png"},
+        {id: "RestartButton", src:"/Assets/images/RestartButton.png"},
+        {id: "background", src:"/Assets/images/background.jpg"}
     ]
-
 
     function Init():void {
         console.log(`%c Assets Loading...`,"font-weight:bold; font-size:20px; color: green;");
@@ -76,9 +52,6 @@
         ScoreBoardManager = new managers.ScoreBoard();
         managers.Game.ScoreBoardManager = ScoreBoardManager;
 
-        textureData.images = [AssetManager.getResult("textureAtlas")];
-        TextureAtlas = new createjs.SpriteSheet(textureData);
-        managers.Game.TextureAtlas = TextureAtlas;
 
         // This is where all the magic happens
         Main();
@@ -115,6 +88,10 @@
 
             case config.Scene.END:
             CurrentScene = new scenes.End();
+            break;
+
+            case config.Scene.INSTRUCTION:
+            CurrentScene = new scenes.Instruction();
             break;
         }
 

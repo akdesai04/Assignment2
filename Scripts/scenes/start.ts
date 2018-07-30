@@ -3,7 +3,7 @@ module scenes {
         // member variables
         private _welcomeLabel: objects.Label;
         private _startButton: objects.Button;
-        
+        private _background: createjs.Bitmap;
 
         // constructors
         constructor() {
@@ -17,9 +17,9 @@ module scenes {
         // public methods
         public Start():void {
 
-            this._welcomeLabel = new objects.Label("Arcade", "80px", "Consolas", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("Car Crash", "80px", "Fugaz One", "#8B0000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
             this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
-
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("background"));
             this.Main();
         }
 
@@ -42,7 +42,7 @@ module scenes {
             this.addChild(this._startButton);
 
             this._startButton.on("click", function(){
-                managers.Game.CurrentState = config.Scene.PLAY;
+                managers.Game.CurrentState = config.Scene.INSTRUCTION;
             }, this);
         }
     }
