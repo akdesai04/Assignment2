@@ -17,9 +17,9 @@ module scenes {
 
         // public methods
         public Start():void {
-            this._welcomeLabel = new objects.Label("Instructions", "80px", "Consolas", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("Instructions", "70px", "Permanent Marker", "#e51d1d", config.Screen.HALF_WIDTH - 65, config.Screen.HALF_HEIGHT + 100, true);
             this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH + 250, 420, true);
-            // this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult(" "));
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("instruction"));
             this.Main();
         }
 
@@ -39,9 +39,10 @@ module scenes {
             console.log(`Starting - INTRUCTION SCENE`);
 
             //this.addChild(this._background);
+            this.addChild(this._background);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
-
+            
             this._startButton.on("click", function(){
                 managers.Game.CurrentState = config.Scene.PLAY;
             }, this);

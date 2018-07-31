@@ -21,7 +21,9 @@
         { id: "enemycar", src: "/Assets/images/enemycar.png" },
         { id: "station", src: "/Assets/images/gastation.png" },
         { id: "RestartButton", src: "/Assets/images/RestartButton.png" },
-        { id: "background", src: "/Assets/images/background.jpg" }
+        { id: "background", src: "/Assets/images/background.jpg" },
+        { id: "instruction", src: "/Assets/images/instruction.png" },
+        { id: "InstructionButton", src: "/Assets/images/InstructionButton.png" }
     ];
     function Init() {
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");
